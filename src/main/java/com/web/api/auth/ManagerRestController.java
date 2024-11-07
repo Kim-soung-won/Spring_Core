@@ -1,10 +1,10 @@
-package com.web.api;
+package com.web.api.auth;
 
-
-import com.web.repository.rdb.Article;
-import com.web.service.ArticleDto;
+import com.web.repository.rdb.auth.Manager;
+import com.web.service.auth.ManagerDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.base.base.api.CrudRestController;
 import org.base.base.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +12,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api/article")
+@Slf4j
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "게시글", description = "게시글 관리")
-public class ArticleRestController extends CrudRestController<Article, ArticleDto, Long> {
+@RequestMapping("/api/manager")
+@Tag(name = "관리자", description = "관리자 관리")
+public class ManagerRestController extends CrudRestController<Manager, ManagerDto, String> {
     @Override
     @Autowired
-    @Qualifier("articleService")
-    protected void setService(CrudService service) {
-        this.name = "게시글";
+    @Qualifier("managerService")
+    protected void setService(CrudService<Manager, ManagerDto, String> service) {
+        this.name = "관리자";
         this.service = service;
     }
 }
