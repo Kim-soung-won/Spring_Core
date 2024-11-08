@@ -15,6 +15,7 @@ public class ManagerDto extends CrudDto {
 
     private String id;
     private String username;
+    private String password;
     private String email;
     private Long pwdId;
     private Long roleId;
@@ -26,6 +27,7 @@ public class ManagerDto extends CrudDto {
         this.username = entity.getUsername();
         this.email = entity.getEmail();
         this.pwdId = entity.getPwdId();
+        this.password = entity.getPassword().getPassword();
         this.roleId = entity.getRoleId();
     }
 
