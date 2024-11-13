@@ -2,6 +2,7 @@ package com.web.core.service.auth;
 
 import com.web.core.client.AuthClient;
 import com.web.core.repository.rdb.auth.Manager;
+import com.web.core.repository.rdb.auth.ManagerRepository;
 import org.base.base.exception.BackendException;
 import org.base.base.repository.rdb.CrdRepository;
 import org.base.base.service.CrudService;
@@ -51,5 +52,9 @@ public class ManagerService extends CrudService<Manager, ManagerDto, String> {
         managerDto.setEnabled(manager.getEnabled() == 1);
 
         return managerDto;
+    }
+
+    public ManagerDto getByUsername(String username) {
+        return ((ManagerRepository) this.repository).findByUsername(username).map(ManagerDto::new).orElse(null);
     }
 }

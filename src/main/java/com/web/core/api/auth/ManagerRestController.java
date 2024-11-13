@@ -29,7 +29,7 @@ public class ManagerRestController extends CrudRestController<Manager, ManagerDt
     }
 
     @Operation(summary = "관리자 ID 조회", description = "관리자 ID 조회")
-    @GetMapping("/{managerId}")
+    @GetMapping("/profile/{managerId}")
     public ApiResponseDto<ManagerDto> getManagerById(@PathVariable String managerId) {
         return new ApiResponseDto<ManagerDto>(true, ((ManagerService) service).getManager(managerId));
     }
