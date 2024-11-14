@@ -2,10 +2,10 @@ package com.web.core.api;
 
 import com.web.core.exception.IgnoreException;
 import com.web.core.exception.RecordException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ public class LivenessController {
     }
 
     @GetMapping("/circuitbreaker-health-check")
-    private String circuitBreakerTest(String param) throws InterruptedException {
+    private String circuitBreakerTest(@RequestParam String param) throws InterruptedException {
         if ("a".equals(param))
             throw new RecordException("record exception");
         else if ("b".equals(param))
@@ -30,5 +30,10 @@ public class LivenessController {
             Thread.sleep(4000);
 
         return param;
+    }
+
+    @GetMapping("/activity")
+    public String getRandomActivity() {
+        throw new RecordException("record exception");
     }
 }
