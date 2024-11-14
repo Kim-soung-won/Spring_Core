@@ -1,4 +1,4 @@
-package com.web.core.api;
+package com.web.core.api.rest;
 
 
 import com.web.core.repository.rdb.Article;

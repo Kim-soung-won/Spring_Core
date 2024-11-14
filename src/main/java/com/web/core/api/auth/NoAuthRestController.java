@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 public class NoAuthRestController {
     private final NoAuthService noAuthService;
     private final ManagerService managerService;
-    private final AuthClient authClient;
 
     @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
     @PostMapping(value = "/signup", produces = "application/json")
@@ -32,5 +31,10 @@ public class NoAuthRestController {
     @GetMapping("/manager/{managerId}")
     public ApiResponseDto<String> getManagerById(@PathVariable("managerId") String managerId) {
         return new ApiResponseDto<String>(true, managerService.getManager(managerId).getId());
+    }
+
+    @GetMapping("/test")
+    public ApiResponseDto<Long> test() throws BackendException, InterruptedException {
+        return new ApiResponseDto<Long>(true, noAuthService.handlePasswordEncryption("ccc", "1234"));
     }
 }
