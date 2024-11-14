@@ -33,9 +33,4 @@ public class NoAuthRestController {
     public ApiResponseDto<String> getManagerById(@PathVariable("managerId") String managerId) {
         return new ApiResponseDto<String>(true, managerService.getManager(managerId).getId());
     }
-
-    @GetMapping("/test")
-    public ApiResponseDto<String> test() throws BackendException, InterruptedException {
-        return new ApiResponseDto<String>(true, noAuthService.sad("ccc", "1234"));
-    }
 }
