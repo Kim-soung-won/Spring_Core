@@ -34,7 +34,7 @@ public class AuthClientService {
     // fallback 메소드는 기존 메서드와 반환 타입이 같아야 한다.
     private String signupFallback(Exception e) throws BackendException {
         log.error("[Auth Service Error] callFallback {}", e.getMessage());
-        throw new BackendException("인증 서버 오류 발생");
+        throw new BackendException(e.getMessage());
     }
 
     private String signupFallback(CallNotPermittedException e) throws BackendException {

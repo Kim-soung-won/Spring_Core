@@ -34,7 +34,7 @@ public class NoAuthRestController {
     }
 
     @GetMapping("/test")
-    public ApiResponseDto<Long> test() throws BackendException, InterruptedException {
-        return new ApiResponseDto<Long>(true, noAuthService.handlePasswordEncryption("ccc", "1234"));
+    public ApiResponseDto<String> test() throws BackendException, InterruptedException {
+        return new ApiResponseDto<String>(true, noAuthService.hana("ccc", "1234"));
     }
 }

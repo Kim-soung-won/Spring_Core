@@ -63,4 +63,10 @@ public class NoAuthService {
     }
 
 
+
+    // 패스워드 암호화 및 저장, 암호화된 패스워드의 ID 반환
+    @Transactional
+    public String hana(String password, String userId) throws BackendException {
+        return authClient.encodePassword(password);
+    }
 }

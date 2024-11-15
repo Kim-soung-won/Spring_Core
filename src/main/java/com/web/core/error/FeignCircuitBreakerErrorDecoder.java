@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class FeignCircuitBreakerErrorDecoder implements ErrorDecoder {
 
+    // ErrorDecoder 란 FeignClient 요청이 실패했을 때 발생하는 오류를 Custom 오류로 변환하는 역할을 수행한다.
+
     Environment env;
 
     @Autowired
